@@ -94,3 +94,24 @@ amended rules), and test a fix.
 - Run text extraction on all documents and check OCR output by eye.
 - Load documents into MySQL.
 - Collect more amendment pairs and write evaluation questions.
+
+### MySQL setup
+
+- Created database `govrule` (utf8mb4) and a project-only user with access
+  to that database alone, instead of using root.
+- Table `documents`: doc_id, filename, ref_no, issue_date, is_scanned,
+  extraction_method, full_text.
+- Loaded all 12 cleaned documents. Character counts in MySQL match the
+  cleaning output exactly, so no text was lost in loading.
+- Database password is entered at run time (getpass) and never stored in
+  the repo.
+- Limitation: ref_no is a rough guess (first line starting with "No"), and
+  for portal files it is the portal number, not the real file number.
+  To be improved when building the amendment layer.
+
+### Next steps (updated)
+
+- Write 20 to 25 evaluation questions by hand (simple lookups plus
+  "which version is current?" questions).
+- Build keyword-search baseline and measure it.
+- Find failure cases, then add the amendment layer and re-measure.

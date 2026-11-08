@@ -28,6 +28,7 @@ def clean(text):
             continue
         if re.fullmatch(r"\d+/\d+", line):  # a page number alone on its line
             continue
+        line = line.replace("DoPI", "DoPT")  # known OCR mistake: I read as T
         kept.append(line)
     result = "\n".join(kept)
     return re.sub(r"\n{3,}", "\n\n", result).strip() + "\n"  # squash big blank gaps

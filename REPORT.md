@@ -115,3 +115,39 @@ amended rules), and test a fix.
   "which version is current?" questions).
 - Build keyword-search baseline and measure it.
 - Find failure cases, then add the amendment layer and re-measure.
+
+## Day 3 log
+
+### Evaluation set (v1)
+
+- 14 questions drafted with AI assistance. Every answer was checked by me
+  against the source document before use.
+- 12 lookup questions, 1 audience question, 2 "which version is current"
+  questions (types overlap in rows 13 and 14).
+
+### Baseline: BM25 keyword search over 12 documents
+
+- Original run: Top-1 10/14.
+- Question correction made after seeing results: rows 2 and 3 do not name
+  an audience, so both the central and the AIS incentive orders are valid
+  answers. Both are now accepted. Corrected: Top-1 11/14.
+- Top-3 is 14/14 but is not informative with only 12 documents.
+
+### Baseline failures (3)
+
+1. Row 1: question asks about central government employees, but search
+   returned the AIS incentive order. The two orders are almost word-for-word
+   identical, so keyword matching cannot separate audiences.
+2. Row 6: search returned the 2023 study leave order instead of the 2024
+   consolidated order, which contains the "2 months" rule.
+3. Row 13: search returned the older 2023 order instead of the 2024
+   consolidated order.
+
+### Limitations
+
+- Many questions reuse document wording, which favours keyword search, so
+  11/14 is probably optimistic. Plan: add paraphrased questions.
+- Row 14 cannot truly fail yet, because the older 1985, 1990 and 1999 orders
+  are not in the corpus.
+- Only 12 documents and 14 questions, so results are counts, not
+  percentages, and show failure modes rather than general performance.

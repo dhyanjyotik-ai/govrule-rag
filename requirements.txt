@@ -10,4 +10,5 @@ pymupdf==2.1
 pymupdf4llm==2.1
 pymupdf_layout==2.1
 PyYAML==6.0.3
+rank-bm25==0.2.2
 tabulate==0.10.0

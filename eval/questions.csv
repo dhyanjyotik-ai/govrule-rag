@@ -1,7 +1,7 @@
 id,type,question,answer,expected_docs,verified
 1,lookup,What is the lump-sum incentive for a Ph.D. for central government employees?,30000 rupees,2022-09-16_higher-qualification-incentive,yes
-2,lookup,How many times in a career can an employee receive the higher-qualification incentive and what is the minimum gap between grants?,Maximum two times with a minimum gap of two years,2022-09-16_higher-qualification-incentive,yes
-3,lookup,Within what period must a government servant claim the higher-qualification incentive after acquiring the qualification?,Within six months,2022-09-16_higher-qualification-incentive,yes
+2,lookup,How many times in a career can an employee receive the higher-qualification incentive and what is the minimum gap between grants?,Maximum two times with a minimum gap of two years,2022-09-16_higher-qualification-incentive;2021-08-13_ais-higher-qualification-incentive,yes
+3,lookup,Within what period must a government servant claim the higher-qualification incentive after acquiring the qualification?,Within six months,2022-09-16_higher-qualification-incentive;2021-08-13_ais-higher-qualification-incentive,yes
 4,lookup,From which date are higher qualifications eligible for the incentive for All India Services officers?,On or after 01.07.2017,2021-08-13_ais-higher-qualification-incentive,yes
 5,audience,What is the incentive for a PG degree of more than one year for an IAS officer?,25000 rupees,2021-08-13_ais-higher-qualification-incentive,yes
 6,lookup,How long before the start of ex-India study leave should an application reach the cadre controlling authority?,At least 2 months before,2024-04-25_exindia-study-leave-consolidated,yes

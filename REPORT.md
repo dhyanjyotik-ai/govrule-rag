@@ -151,3 +151,13 @@ amended rules), and test a fix.
   are not in the corpus.
 - Only 12 documents and 14 questions, so results are counts, not
   percentages, and show failure modes rather than general performance.
+
+## Day 4: Embedding search and failure analysis
+
+- Setup: sentence-transformers model all-MiniLM-L6-v2. The 12 orders were cut into 160 chunks of 120 words (40 words of overlap). An order's score is its best chunk.
+- Results on the 14 questions: keyword search (BM25) Top-1 11/14, Top-3 14/14. Embedding search Top-1 12/14, Top-3 13/14. The difference is one question, which is too small to call either method better.
+- Embeddings fixed rows 6 and 13, which keyword search missed. Embeddings missed row 7, which keyword search got right. Both missed row 1 at rank 1.
+- Failure type 1 (row 7): an exact official term ("Central Deputation Reserve (CDR) @ 40% of Senior Duty Posts") sits inside a longer chunk about study leave proposals. The chunk's overall meaning is about study leave, so a chunk about deputation in general ranked higher. The correct orders ranked 4th and 5th of 160 chunks.
+- Failure type 2 (row 1): two orders use near-identical wording for different groups (All India Service officers and central government employees). The longer 2021 order for All India Service officers took three of the top five chunks. The correct 2022 order ranked 4th of 160.
+- Limits: 14 questions, one chunk size, one embedding model, no tuning.
+- Small fix noted: the cleaned text contains non-breaking spaces from the PDFs.

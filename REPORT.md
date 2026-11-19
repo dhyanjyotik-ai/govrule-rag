@@ -161,3 +161,12 @@ amended rules), and test a fix.
 - Failure type 2 (row 1): two orders use near-identical wording for different groups (All India Service officers and central government employees). The longer 2021 order for All India Service officers took three of the top five chunks. The correct 2022 order ranked 4th of 160.
 - Limits: 14 questions, one chunk size, one embedding model, no tuning.
 - Small fix noted: the cleaned text contains non-breaking spaces from the PDFs.
+
+## Day 5: Answer step and grading
+
+- Setup: keyword search (BM25) returns the top 3 orders as whole text. The model claude-haiku-5-5 is told to answer only from those orders, to name the order it used, and to reply "Not found in the provided orders" otherwise. I chose BM25 with the top 3 because it had the right order in its top 3 for all 14 questions, so this run tests answer writing on its own.
+- Raw answers are in eval/answers_bm25.csv.
+- Grading: the key fact was correct in 14 of 14 answers. The first pass was done by an AI assistant against reference answers that I had checked against the source orders. The extra details in 7 answers (rows 1, 3, 9, 10, 11, 13, 14) were checked in the order text and all were supported. The extra details in the other 7 answers were not checked one by one.
+- Reference correction: the row 14 reference said the earlier caps were "180/240/300 days". The 2019 order shows they were successive limits (180, raised to 240, raised to 300). I reworded the reference. The grade did not change.
+- Limits: 14 questions, mostly single-fact lookups. The right order was already in the top 3 every time, so this result does not show how answers behave when the wrong or an outdated order is retrieved.
+- Next: the amendment layer, and harder questions.

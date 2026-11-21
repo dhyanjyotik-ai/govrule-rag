@@ -1,11 +1,12 @@
 import csv
 import re
+import sys
 from pathlib import Path
 from rank_bm25 import BM25Okapi
 
-TEXT = Path("data/apsc/text")
+TEXT = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("data/apsc/text")
 QUESTIONS = Path("eval/apsc_questions.csv")
-OUT = Path("eval/apsc_retrieval_bm25.csv")
+OUT = Path(sys.argv[2]) if len(sys.argv) > 2 else Path("eval/apsc_retrieval_bm25.csv")
 
 
 def clean(text):
